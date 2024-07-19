@@ -1,6 +1,21 @@
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { Box,  Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
+import styled from "styled-components";
 import * as Yup from "yup";
+
+interface ButtonProps{
+    primary?: boolean;
+}
+
+const Button = styled.button<ButtonProps>`
+  background: ${props => props.primary ? 'palevioletred' : 'white'};
+  color: ${props => props.primary ? 'white' : 'palevioletred'};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
 
 const validationSchema = Yup.object({
     fname: Yup.string().required("First Name is required").min(2, "First Name should be at least 2 characters long"),
@@ -111,10 +126,8 @@ const Contact = () => {
                     />
                 </Grid>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button 
+                    <Button primary
                         type="submit" 
-                        variant="contained" 
-                        color="success"
                     >
                         Submit
                     </Button>
