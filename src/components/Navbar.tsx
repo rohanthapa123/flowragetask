@@ -1,7 +1,8 @@
 import { AppBar, Box, Button, Container, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu'; // Import the Menu icon
+import MenuIcon from '@mui/icons-material/Menu';
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { motion } from 'framer-motion';
 
 const navItems = ['Home', 'About', 'Projects', 'Contact'];
 
@@ -19,8 +20,13 @@ export const Navbar = (props: Props) => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const drawerVariants = {
+    hidden: { x: '-100%' },
+    visible: { x: 0 },
+  };
+
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'  }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         ROHAN
       </Typography>
@@ -40,7 +46,7 @@ export const Navbar = (props: Props) => {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', height: '10vh' }}>
       <CssBaseline />
       <AppBar component="nav">
         <Container maxWidth="lg"> {/* Set the maximum width for the container */}
@@ -49,10 +55,10 @@ export const Navbar = (props: Props) => {
               color="inherit"
               aria-label="open drawer"
               edge="start"
-              onClick={handleDrawerToggle} // Add this line
+              onClick={handleDrawerToggle}
               sx={{ mr: 2, display: { sm: 'none' } }}
             >
-              <MenuIcon /> {/* Use MenuIcon here */}
+              <MenuIcon />
             </IconButton>
             <Typography
               variant="h6"
@@ -87,7 +93,14 @@ export const Navbar = (props: Props) => {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
-          {drawer}
+          <motion.div
+            initial="hidden"
+            animate={mobileOpen ? "visible" : "hidden"}
+            variants={drawerVariants}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
+            {drawer}
+          </motion.div>
         </Drawer>
       </nav>
     </Box>
