@@ -1,7 +1,11 @@
 import { Box,  Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
+import React from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { AppDispatch, RootState } from "../store/store";
+import {resetContactForm, setEmail , setFname , setLname , setMessage } from "../store/slices/contactData"
 
 interface ButtonProps{
     primary?: boolean;
@@ -24,19 +28,25 @@ const validationSchema = Yup.object({
     message: Yup.string().required("Message is required").min(10, "Message should be at least 10 characters long"),
 });
 
-const Contact = () => {
+const Contact:React.FC = () => {
+
+    const dispatch = useAppDispatch<AppDispatch>();
+    const contact = useAppSelector((state:RootState) => state.contact);
+
     const formik = useFormik({
         initialValues: {
-            fname: '',
-            lname: '',
-            email: '',
-            message: '',
+            fname: contact.fname,
+            lname: contact.lname,
+            email: contact.email,
+            message: contact.message,
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
             console.log(values);
             alert("Submitted");
+            dispatch(resetContactForm());
         },
+        enableReinitialize: true,
     });
 
     return (
@@ -75,7 +85,10 @@ const Contact = () => {
                         variant="outlined" 
                         fullWidth 
                         value={formik.values.fname} 
-                        onChange={formik.handleChange} 
+                        onChange={(e) => {
+                            formik.handleChange;
+                            dispatch(setFname(e.target.value));
+                        }} 
                         onBlur={formik.handleBlur}
                         error={formik.touched.fname && Boolean(formik.errors.fname)}
                         helperText={formik.touched.fname && formik.errors.fname}
@@ -89,7 +102,10 @@ const Contact = () => {
                         variant="outlined" 
                         fullWidth 
                         value={formik.values.lname} 
-                        onChange={formik.handleChange} 
+                        onChange={(e) => {
+                            formik.handleChange;
+                            dispatch(setLname(e.target.value));
+                        }} 
                         onBlur={formik.handleBlur}
                         error={formik.touched.lname && Boolean(formik.errors.lname)}
                         helperText={formik.touched.lname && formik.errors.lname}
@@ -103,7 +119,10 @@ const Contact = () => {
                         variant="outlined" 
                         fullWidth 
                         value={formik.values.email} 
-                        onChange={formik.handleChange} 
+                        onChange={(e) => {
+                            formik.handleChange;
+                            dispatch(setEmail(e.target.value));
+                        }} 
                         onBlur={formik.handleBlur}
                         error={formik.touched.email && Boolean(formik.errors.email)}
                         helperText={formik.touched.email && formik.errors.email}
@@ -119,14 +138,17 @@ const Contact = () => {
                         rows={4} 
                         fullWidth 
                         value={formik.values.message} 
-                        onChange={formik.handleChange} 
+                        onChange={(e) => {
+                            formik.handleChange;
+                            dispatch(setMessage(e.target.value));
+                        }}  
                         onBlur={formik.handleBlur}
                         error={formik.touched.message && Boolean(formik.errors.message)}
                         helperText={formik.touched.message && formik.errors.message}
                     />
                 </Grid>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button primary
+                    <Button primary={true}
                         type="submit" 
                     >
                         Submit
