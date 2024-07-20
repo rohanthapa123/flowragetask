@@ -5,10 +5,15 @@ import { Container } from "@mui/material"
 const Layout = () => {
     return (
         <>
-            
+
             <Container>
-                <Navbar />
-                <Outlet />
+                <div className="h-[10vh]">
+                    <Navbar />
+                </div>
+                <div className=" sm:mt-[10vh] lg:mt-0">
+
+                    <Outlet />
+                </div>
             </Container>
         </>
     )

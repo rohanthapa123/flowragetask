@@ -31,8 +31,10 @@ const Projects: React.FC = () => {
             <Grid container spacing={2} rowSpacing={2}>
                 {
                     data?.map((item: any) => {
-                        return <Grid item xs={4}>
-                            <Card sx={{ maxWidth: 345 }}>
+                        return <Grid item sm={12} lg={4} xl={3} md={6} sx={{
+
+                        }} >
+                            <Card sx={{ maxWidth: 345, margin: "auto" }}>
                                 <CardMedia
                                     sx={{
                                         height: '250px',

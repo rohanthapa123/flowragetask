@@ -11,7 +11,7 @@ interface ButtonProps{
     primary?: boolean;
 }
 
-const Button = styled.button<ButtonProps>`
+const StyledButton = styled.button<ButtonProps>`
   background: ${props => props.primary ? 'palevioletred' : 'white'};
   color: ${props => props.primary ? 'white' : 'palevioletred'};
   font-size: 1em;
@@ -148,11 +148,11 @@ const Contact:React.FC = () => {
                     />
                 </Grid>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button primary={true}
+                    <StyledButton primary
                         type="submit" 
                     >
                         Submit
-                    </Button>
+                    </StyledButton>
                 </Grid>
             </Grid>
         </Box>
