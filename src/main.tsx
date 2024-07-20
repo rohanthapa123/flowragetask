@@ -6,6 +6,8 @@ import { createTheme, ThemeProvider } from '@mui/material'
 import { lime, purple } from '@mui/material/colors'
 import { Provider } from 'react-redux'
 import { store } from './store/store.ts'
+import { QueryClient, QueryClientProvider } from 'react-query'
+const queryClient = new QueryClient();
 
 const theme = createTheme({
   palette: {
@@ -18,10 +20,13 @@ const theme = createTheme({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
 
-        <App />
-      </Provider>
+        <Provider store={store}>
+
+          <App />
+        </Provider>
+      </QueryClientProvider>
     </ThemeProvider>
   </React.StrictMode>,
 )

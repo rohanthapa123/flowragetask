@@ -1,7 +1,7 @@
 import { AppBar, Box, Button, Container, CssBaseline, IconButton, MenuItem, Toolbar, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-const navItems = ['Home', 'About', 'Services', 'Projects', 'Contact'];
+const navItems = ['Home', 'About', 'Projects', 'Contact'];
 
 export const Navbar = () => {
 

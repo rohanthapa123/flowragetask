@@ -3,6 +3,7 @@ import './App.css'
 import { Landing } from './pages/Landing'
 import Layout from "./layout/Layout"
 import Contact from './pages/Contact'
+import Projects from './pages/Projects'
 
 
 function App() {
@@ -14,8 +15,7 @@ function App() {
           <Route index element={<Navigate to={"/home"} />} />
           <Route path='/home' index element={<Landing />} />
           <Route path='/about' element={<Landing />} />
-          <Route path='/services' element={<Landing />} />
-          <Route path='/projects' element={<Landing />} />
+          <Route path='/projects' element={<Projects />} />
           <Route path='/contact' element={<Contact />} />
         </Route>
       </Routes>
