@@ -8,12 +8,12 @@ import { AppDispatch, RootState } from "../store/store";
 import { resetContactForm, setEmail, setFname, setLname, setMessage } from "../store/slices/contactData"
 
 interface ButtonProps {
-    primary?: boolean;
+    $primary?: string;
 }
 
 const StyledButton = styled.button<ButtonProps>`
-  background: ${props => props.primary ? 'palevioletred' : 'white'};
-  color: ${props => props.primary ? 'white' : 'palevioletred'};
+  background: ${props => props.$primary === "true" ? 'palevioletred' : 'white'};
+  color: ${props => props.$primary === "true" ? 'white' : 'palevioletred'};
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
@@ -148,7 +148,7 @@ const Contact: React.FC = () => {
                     />
                 </Grid>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <StyledButton primary
+                    <StyledButton $primary="true"
                         type="submit"
                     >
                         Submit

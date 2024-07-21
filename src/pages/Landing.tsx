@@ -1,5 +1,5 @@
 import { Box, Typography, Grid } from "@mui/material";
-import background from "../assets/background.jpg";
+import image from "../assets/image.jpg";
 
 export const Landing = () => {
   return (
@@ -22,7 +22,7 @@ export const Landing = () => {
             justifyContent: "center",
 
           }}>
-            <img src={background} alt="my info" style={{ width: '65%', borderRadius: '50%', aspectRatio: '1/1' }} />
+            <img src={image} alt="my info" style={{ width: '65%', borderRadius: '50%', aspectRatio: '1/1' , objectFit: 'cover' }} />
           </Box>
         </Grid>
       </Grid>
