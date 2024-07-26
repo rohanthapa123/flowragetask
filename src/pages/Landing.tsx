@@ -20,9 +20,10 @@ export const Landing = () => {
           <Box sx={{
             display: "flex",
             justifyContent: "center",
+            // backgroundColor: '#f0f0f0',
 
           }}>
-            <img src={image} alt="my info" style={{ width: '65%', borderRadius: '50%', aspectRatio: '1/1' , objectFit: 'cover' }} />
+            <img src={image} alt="my info" loading="lazy" style={{ width: '65%', borderRadius: '50%', aspectRatio: '1/1', objectFit: 'cover' }} />
           </Box>
         </Grid>
       </Grid>
